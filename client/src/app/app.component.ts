@@ -1,11 +1,17 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http'
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';  
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+ 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  standalone: true,
+  imports: [CommonModule ]  
 })
+
 export class AppComponent implements OnInit {
 
   title = 'Dating app';
