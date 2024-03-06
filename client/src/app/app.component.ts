@@ -1,15 +1,17 @@
 import {HttpClient} from '@angular/common/http'
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';  
-//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavComponent } from './nav/nav.component';
+import { FormsModule } from '@angular/forms';
 
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   standalone: true,
-  imports: [CommonModule ]  
+  imports: [CommonModule, NavComponent, FormsModule ]
 })
 
 export class AppComponent implements OnInit {
@@ -17,6 +19,7 @@ export class AppComponent implements OnInit {
   title = 'Dating app';
   users: any; 
   constructor(private http: HttpClient){}
+ 
 
   ngOnInit(): void {
     this.http.get('http://localhost:5227/api/users').subscribe({
