@@ -13,7 +13,7 @@ import { SharedModule } from './_modules/shared.module';
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
     standalone: true,
-    imports: [CommonModule, NavComponent, HomeComponent, RouterModule, SharedModule   ]
+    imports: [CommonModule, NavComponent, HomeComponent, RouterModule, SharedModule ]
 })
  
 export class AppComponent implements OnInit {
