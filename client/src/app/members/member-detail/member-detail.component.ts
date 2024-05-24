@@ -10,7 +10,6 @@ import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
   selector: 'app-member-detail',
   standalone: true,
   imports: [NgIf,TabsModule, GalleryModule],
-  imports: [NgIf,TabsModule, GalleryModule],
   templateUrl: './member-detail.component.html',
   styleUrl: './member-detail.component.sass'
 })
