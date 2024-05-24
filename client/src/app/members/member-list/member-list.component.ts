@@ -22,5 +22,6 @@ export class MemberListComponent implements OnInit {
     this.memberService.getMembers().subscribe({
       next: members => this.members = members
     })
-  } 
+  }
+ 
 }

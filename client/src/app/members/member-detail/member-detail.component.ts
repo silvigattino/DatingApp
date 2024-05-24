@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
-
+ 
 @Component({
   selector: 'app-member-detail',
   standalone: true,
@@ -14,16 +14,16 @@ import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
   styleUrl: './member-detail.component.sass'
 })
 export class MemberDetailComponent {
-  
+ 
   member: Member | undefined;
   images: GalleryItem[] = [];
    
   constructor(private memberService: MembersService, private route: ActivatedRoute) {}
-
+ 
   ngOnInit(): void {
     this.loadMember();
   }
-
+ 
   loadMember(){
     const username = this.route.snapshot.paramMap.get('username');
     if (!username) return;
@@ -33,7 +33,7 @@ export class MemberDetailComponent {
        }
     })
   }
-  
+ 
   getImages(){
     if(!this.member) return;
     for(const photo of this.member?.photos){
@@ -41,7 +41,5 @@ export class MemberDetailComponent {
       //this.images.push(new ImageItem({src:photo.url, thumb: photo.url}));
     }    
   }
-
+ 
 }
-
-
