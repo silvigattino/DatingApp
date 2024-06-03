@@ -11,7 +11,7 @@ import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
   standalone: true,
   imports: [NgIf,TabsModule, GalleryModule],
   templateUrl: './member-detail.component.html',
-  styleUrl: './member-detail.component.sass'
+  styleUrl: './member-detail.component.css'
 })
 export class MemberDetailComponent {
  
