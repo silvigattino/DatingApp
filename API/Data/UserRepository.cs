@@ -6,7 +6,6 @@ using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data;
-
 public class UserRepository : IUserRepository
 {
     private readonly DataContext _context;
