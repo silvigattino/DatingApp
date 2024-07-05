@@ -6,14 +6,13 @@ import { User } from './_models/user';
 import { HomeComponent } from "./home/home.component";
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './_modules/shared.module';
-
  
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
     standalone: true,
-    imports: [CommonModule, NavComponent, HomeComponent, RouterModule, SharedModule ]
+    imports: [CommonModule, NavComponent, HomeComponent, RouterModule, SharedModule]
 })
  
 export class AppComponent implements OnInit {
