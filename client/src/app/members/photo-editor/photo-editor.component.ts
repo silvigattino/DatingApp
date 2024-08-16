@@ -8,7 +8,7 @@ import { AccountService } from '../../_services/account.service';
 import { take } from 'rxjs';
 import { MembersService } from '../../_services/members.service';
 import { Photo } from '../../_models/photo';
-
+ 
 @Component({
   selector: 'app-photo-editor',
   standalone: true,
@@ -16,14 +16,14 @@ import { Photo } from '../../_models/photo';
   templateUrl: './photo-editor.component.html',
   styleUrl: './photo-editor.component.css'
 })
-
+ 
 export class PhotoEditorComponent implements OnInit {
   @Input() member: Member | undefined;
   uploader: FileUploader | undefined;
   hasBaseDropZoneOver = false;
   baseUrl = environment.apiUrl;
   user: User | undefined;
-  
+ 
   constructor(private accountService: AccountService, private memberService: MembersService){
     this.accountService.currentUser$.pipe(take(1)).subscribe({
       next: user =>{
@@ -31,17 +31,17 @@ export class PhotoEditorComponent implements OnInit {
       }
     })
   }
-
+ 
   ngOnInit(): void {
     this.initializeUploader();
   }
-
+ 
   fileOverBase(e: any){
     this.hasBaseDropZoneOver = e;
   }
-
+ 
   setMainPhoto(photo: Photo){
-    this.memberService.setMainPhoto(photo.id).subscribe({
+    this.memberService.setMainPhoto(photo).subscribe({
       next: () =>{
         if (this.user && this.member){
           this.user.photoUrl = photo.url;
@@ -55,20 +55,20 @@ export class PhotoEditorComponent implements OnInit {
       }
     })
   }
-
-  deletePhoto(photoId: number){
-    this.memberService.deletePhoto(photoId).subscribe({
+ 
+  deletePhoto(photo: Photo){
+    this.memberService.deletePhoto(photo).subscribe({
       next: _ => {
         if (this.member){
-          this.member.photos = this.member.photos.filter(x => x.id != photoId);          
+          this.member.photos = this.member.photos.filter(x => x.id != photo.id);          
         }
       }
     })
   }
-
+ 
   initializeUploader(){
     this.uploader = new FileUploader({
-      url: this.baseUrl +  'users/add-photo', 
+      url: this.baseUrl +  'users/add-photo',
       authToken: 'Bearer ' + this.user?.token,
       isHTML5: true,
       allowedFileType: ['image'],
@@ -76,11 +76,11 @@ export class PhotoEditorComponent implements OnInit {
       autoUpload: false,
       maxFileSize: 10 * 1024 * 1024
     });
-
+ 
     this.uploader.onAfterAddingFile = (file) =>{
       file.withCredentials = false
     }
-
+ 
     this.uploader.onSuccessItem = (item, response, status, headers) =>{
       if (response){
         const photo = JSON.parse(response);
@@ -94,5 +94,5 @@ export class PhotoEditorComponent implements OnInit {
       }
     }
   }
-
+ 
 }
